@@ -1,0 +1,146 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom glitch effect */
+.glitch {
+  position: relative;
+  color: white;
+  font-weight: 700;
+  animation: glitch-animation 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  color: wheat;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch::before {
+  animation: glitch-top 2s infinite linear alternate-reverse;
+  color: #00fff7;
+}
+.glitch::after {
+  animation: glitch-bottom 2s infinite linear alternate-reverse;
+  color: #ff00c8;
+}
+
+@keyframes glitch-animation {
+  0% { transform: none; }
+  20% { transform: skew(0.5deg, 0.5deg); }
+  40% { transform: skew(-0.5deg, -0.5deg); }
+  60% { transform: translate(1px, -1px); }
+  80% { transform: translate(-1px, 1px); }
+  100% { transform: none; }
+}
+
+@keyframes glitch-top {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(0, 9999px, 10px, 0); }
+  20% { clip: rect(5px, 9999px, 15px, 0); }
+  30% { clip: rect(10px, 9999px, 20px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitch-bottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(10px, 9999px, 25px, 0); }
+  20% { clip: rect(15px, 9999px, 30px, 0); }
+  30% { clip: rect(25px, 9999px, 40px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1f2e;
+  color: #fff;
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  .text-wheat {
+    @apply text-amber-200;
+  }
+  
+  .glow {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+  }
+  
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(137, 109, 255, 0.5);
+  }
+  
+  .bg-cyber {
+    background-color: #1a1f2e;
+    background-image: 
+      linear-gradient(0deg, rgba(78, 127, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(78, 127, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center center;
+  }
+  
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(78, 127, 255, 0.5);
+  }
+  
+  .cyber-border {
+    position: relative;
+    border: 1px solid rgba(78, 127, 255, 0.2);
+  }
+  
+  .cyber-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(78, 127, 255, 0.2), rgba(137, 109, 255, 0.2));
+    z-index: -1;
+    border-radius: inherit;
+  }
+}
